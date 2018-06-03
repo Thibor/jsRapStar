@@ -1,10 +1,10 @@
 (function($){
 	$.fn.jsRapStar = function(options){
 		var defaults = {
-			starOn:'/plugins/jsRapStar/starY.png',
-			starOff:'/plugins/jsRapStar/starW.png',
+			colorW:'rapStarCW',
+			colorY:'rapStarCY',
 			enabled:true,
-			step:false,
+			step:true,
 			starWidth:16,
 			starHeight:16,
 			length:5
@@ -14,18 +14,13 @@
 			var sw = opt.starWidth;
 			var sh = opt.starHeight;
 			var w = sw * opt.length;
-			$(this).css({width:w,height:sh,overflow:'hidden',position:'relative', cursor:'pointer',background: 'url(' + opt.starOff + ') repeat-x','background-size':sw+'px ' + sh + 'px'});
-			var start = $(this).attr('start');
+			$(this).addClass('rapStarDW ' + opt.colorW);
+			$(this).css({width:w,height:sh,'background-size':sw+'px ' + sh + 'px'});
+			var start = parseFloat($(this).attr('start'));
 			var oldWidth = Math.round(start * sw);
 			var dStar = $('<div>',{
-				class:'jStarOn',
-				css:{
-				    'z-index':1,
-					position:'absolute',
-					width:oldWidth,
-					height:sh,
-					background: 'url(' + opt.starOn+') repeat-x','background-size':sw + 'px '+sh + 'px'
-				}
+				class:'rapStarDY ' + opt.colorY,
+				css:{width:oldWidth,height:sh,'background-size':sw + 'px '+sh + 'px'}
 			}).appendTo($(this));
 			if(opt.enabled)
 				$(this).bind({

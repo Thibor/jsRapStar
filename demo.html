@@ -1,17 +1,32 @@
-<!doctype html><html><head lang="pl">
+<!doctype html>
+<html>
+<head>
 <meta charset="UTF-8">
-<meta name="keywords" content=""/>
-<meta name="description" content="" />
 <title>Demo</title>
+<link rel="stylesheet" href="jsRapStar.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="jsRapStar.js"></script>
 <script>
 $(document).ready(function(){
-$('.rapStar').jsRapStar({length:10,starWidth:16,starHeight:16,step:true});
+$('#demo1').jsRapStar();
+$('#demo2').jsRapStar({enabled:false});
+$('#demo3').jsRapStar({length:10,starWidth:32,starHeight:32,step:false,
+onClick:function(score){
+	alert(score);
+},
+onMousemove:function(score){
+	$(this).attr('title','Ocena '+score);
+}
+});
 });
 </script>
 </head>
 <body>
-<div class="rapStar"></div>
+Standard
+<div id="demo1" start="3"></div>
+Disable
+<div id="demo2" start="4"></div>
+Action
+<div id="demo3" start="5"></div>
 </body>
 </html>
