@@ -10,7 +10,8 @@
 $(document).ready(function(){
 $('#demo1').jsRapStar();
 $('#demo2').jsRapStar({enabled:false});
-$('#demo3').jsRapStar({length:10,starWidth:32,starHeight:32,step:false,
+$('#demo3').jsRapStar({colorY:'rapStarCG',colorW:'rapStarCY'});
+$('#demo4').jsRapStar({colorY:'rapStarCG',length:10,starWidth:32,starHeight:32,step:false,
 onClick:function(score){
 	alert(score);
 },
@@ -26,7 +27,9 @@ Standard
 <div id="demo1" start="3"></div>
 Disable
 <div id="demo2" start="4"></div>
+Colors
+<div id="demo3" start="2"></div>
 Action
-<div id="demo3" start="5"></div>
+<div id="demo4" start="6"></div>
 </body>
 </html>
