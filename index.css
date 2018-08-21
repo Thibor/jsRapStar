@@ -1,4 +1,4 @@
-#divAd{
+#GitHub{
 background-color:#800;	
 border:solid 2px black;	
 color:white;
@@ -17,6 +17,6 @@ width:240px;
 -webkit-user-select: none;
 -moz-user-select: none;
 }
-#divAd:hover{
+#GitHub:hover{
 background-color:#f00;
 }

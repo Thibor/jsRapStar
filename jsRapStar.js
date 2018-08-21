@@ -1,27 +1,22 @@
 (function($){
 	$.fn.jsRapStar = function(options){
 		var defaults = {
-			colorW:'rapStarCW',
-			colorY:'rapStarCY',
+			star:'&#9733',
+			colorFront:'yellow',
+			colorBack:'white',
 			enabled:true,
 			step:true,
-			starWidth:16,
-			starHeight:16,
-			length:5
+			starHeight:32,
+			length:6
 		};
 		return this.each(function(){
 			var opt = $.extend(defaults,options);
-			var sw = opt.starWidth;
-			var sh = opt.starHeight;
-			var w = sw * opt.length;
-			$(this).addClass('rapStarDW ' + opt.colorW);
-			$(this).css({width:w,height:sh,'background-size':sw+'px ' + sh + 'px'});
+			this.starH = Array(opt.length + 1).join('<span>' + opt.star + '</span>');
+			this.StarB = $(this).addClass('rapStarBack').css({color:opt.colorBack,'font-size':opt.starHeight + 'px'}).html(this.starH);
 			var start = parseFloat($(this).attr('start'));
-			var oldWidth = Math.round(start * sw);
-			var dStar = $('<div>',{
-				class:'rapStarDY ' + opt.colorY,
-				css:{width:oldWidth,height:sh,'background-size':sw + 'px '+sh + 'px'}
-			}).appendTo($(this));
+			var sw = $(this.StarB).width() / opt.length;
+			var aw = start * sw;
+			this.StarF = $('<div>').addClass('rapStarFront').css({color:opt.colorFront,'font-size':opt.starHeight + 'px'}).html(this.starH).width(aw).appendTo($(this));
 			if(opt.enabled)
 				$(this).bind({
 					mousemove:function(e){
@@ -31,19 +26,19 @@
 						var e = Math.floor(relativeX / sw) + 1;
 						if(opt.step) newWidth = e * sw;
 						else newWidth = relativeX;
-						dStar.width(newWidth);
+						this.StarF.width(newWidth);
 						if(opt.onMousemove)
 							opt.onMousemove.call(this,newWidth / sw);
 					},
 					mouseleave:function(e){
-						dStar.width(oldWidth);
+						this.StarF.width(aw);
 						if(opt.onMouseleave)
 							opt.onMouseleave.call(this,start);
 					},
 					click:function(e){
 						e.preventDefault();
-						oldWidth = newWidth;
-						dStar.width(newWidth);
+						aw = newWidth;
+						this.StarF.width(newWidth);
 						start = newWidth / sw;
 						if(opt.onClick)
 							opt.onClick.call(this,start);
