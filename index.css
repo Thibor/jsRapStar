@@ -1,3 +1,16 @@
+#divMain{
+margin:auto;		
+width:80%;
+}
+#divGitHub{
+top:0px;
+right:0px;
+width:200px;
+height:200px;
+overflow:hidden;
+position:absolute;
+z-index:1;
+}
 #GitHub{
 background-color:#800;	
 border:solid 2px black;	
