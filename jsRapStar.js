@@ -9,7 +9,10 @@
 				enabled:true,
 				step:true,
 				starHeight:32,
-				length:6
+				length:6,
+				onClick:null,
+				onMousemove:null,
+				onMouseleave:null
 			},options);
 			var base = this;
 			var starH = Array(this.opt.length + 1).join('<span>' + this.opt.star + '</span>');
