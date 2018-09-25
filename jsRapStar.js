@@ -25,8 +25,7 @@
 				$(this).bind({
 					mousemove:function(e){
 						e.preventDefault();
-						var realOffsetLeft = findRealLeft(this);
-						var relativeX = e.pageX - realOffsetLeft;
+						var relativeX = e.clientX - $(base)[0].getBoundingClientRect().left;
 						var e = Math.floor(relativeX / sw) + 1;
 						if(base.opt.step) newWidth = e * sw;
 						else newWidth = relativeX;
@@ -48,10 +47,6 @@
 							base.opt.onClick.call(base,start);
 					}
 				});
-			function findRealLeft(obj){
-				if(!obj) return 0;
-				return obj.offsetLeft + findRealLeft(obj.offsetParent);
-			}
 		})
 	}
 })(jQuery);
