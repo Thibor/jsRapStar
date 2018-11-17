@@ -16,11 +16,11 @@
 			},options);
 			var base = this;
 			var starH = Array(this.opt.length + 1).join('<span>' + this.opt.star + '</span>');
-			this.StarB = $(this).addClass('rapStarBack').css({color:this.opt.colorBack,'font-size':this.opt.starHeight + 'px'}).html(starH);
+			this.StarB = $(this).addClass('rapStar').css({color:this.opt.colorBack,'font-size':this.opt.starHeight + 'px'}).html(starH);
 			var start = parseFloat($(this).attr('start'));
 			var sw = this.StarB.width() / this.opt.length;
 			var aw = start * sw;
-			this.StarF = $('<div>').addClass('rapStarFront').css({color:this.opt.colorFront,'font-size':this.opt.starHeight + 'px'}).html(starH).width(aw).appendTo(this);
+			this.StarF = $('<div>').addClass('rapStarFront').css({color:this.opt.colorFront}).html(starH).width(aw).appendTo(this);
 			if(this.opt.enabled)
 				$(this).bind({
 					mousemove:function(e){
