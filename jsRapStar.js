@@ -21,7 +21,7 @@
 			var sw = this.StarB.width() / this.opt.length;
 			var aw = start * sw;
 			this.StarF = $('<div>').addClass('rapStarFront').css({color:this.opt.colorFront}).html(starH).width(aw).appendTo(this);
-			if(this.opt.enabled)
+			if(this.opt.enabled){
 				$(this).bind({
 					mousemove:function(e){
 						e.preventDefault();
@@ -47,6 +47,8 @@
 							base.opt.onClick.call(base,start);
 					}
 				});
+			}else
+				$(this).addClass('rapStarDisable');
 		})
 	}
 })(jQuery);
