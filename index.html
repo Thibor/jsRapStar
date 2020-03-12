@@ -10,7 +10,7 @@
 <script>
 $(document).ready(function(){
 $('#demo1').jsRapStar();
-$('#demo2').jsRapStar({enabled:false});
+$('#demo2').jsRapStar({enabled:false,value:2});
 $('#demo3').jsRapStar({colorFront:'#0ff',colorBack:'yellow'});
 $('#demo4').jsRapStar({star:'&#x2665',colorFront:'red',starHeight:64});
 $('#demo5').jsRapStar({colorFront:'#0f0',length:10,starHeight:64,step:false,
@@ -19,7 +19,10 @@ onClick:function(score){
 	alert(score);
 },
 onMousemove:function(score){
-	$(this).attr('title','Ocena '+score);
+	$(this).attr('title','Rate '+score);
+},
+onMouseleave(score){
+	$('#label').text(score);
 }
 });
 });
@@ -31,15 +34,16 @@ onMousemove:function(score){
 <div id="GitHub" onclick="location.href='https://github.com/Thibor/jsRapStar'"></div>
 </div>
 <div>Standard</div>
-<div id="demo1" start="3"></div>
+<div id="demo1"></div>
 <div>Disabled</div>
-<div id="demo2" start="4"></div>
+<div id="demo2" value="4" color="pink"></div>
 <div>Colors</div>
-<div id="demo3" start="2"></div>
+<div id="demo3" value="2"></div>
 <div>Symbol</div>
-<div id="demo4" start="5"></div>
+<div id="demo4" value="5"></div>
 <div>Action</div>
-<div id="demo5" start="6"></div>
+<div id="demo5" value="6"></div>
+<div id="label" value="6"></div>
 </div>
 </body>
 </html>

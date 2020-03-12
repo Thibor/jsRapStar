@@ -2,14 +2,19 @@
 	$.fn.jsRapStar = function(options){
 		
 		return this.each(function(){
+			let value = $(this).attr('value');
+			let color = $(this).attr('color');
+			value = value === undefined ? 0 : parseFloat(value);
+			color = color === undefined ? 'yellow' : color;
 			this.opt = $.extend({
 				star:'&#9733',
-				colorFront:'yellow',
+				colorFront:color,
 				colorBack:'white',
 				enabled:true,
 				step:true,
 				starHeight:32,
 				length:6,
+				value: value,
 				onClick:null,
 				onMousemove:null,
 				onMouseleave:null
@@ -17,9 +22,8 @@
 			var base = this;
 			var starH = Array(this.opt.length + 1).join('<span>' + this.opt.star + '</span>');
 			this.StarB = $(this).addClass('rapStar').css({color:this.opt.colorBack,'font-size':this.opt.starHeight + 'px'}).html(starH);
-			var start = parseFloat($(this).attr('start'));
 			var sw = this.StarB.width() / this.opt.length;
-			var aw = start * sw;
+			var aw = base.opt.value * sw;
 			this.StarF = $('<div>').addClass('rapStarFront').css({color:this.opt.colorFront}).html(starH).width(aw).appendTo(this);
 			if(this.opt.enabled){
 				$(this).bind({
@@ -36,15 +40,15 @@
 					mouseleave:function(e){
 						this.StarF.width(aw);
 						if(base.opt.onMouseleave)
-							base.opt.onMouseleave.call(base,start);
+							base.opt.onMouseleave.call(base,base.opt.value);
 					},
 					click:function(e){
 						e.preventDefault();
 						aw = newWidth;
 						this.StarF.width(newWidth);
-						start = newWidth / sw;
+						base.opt.value = newWidth / sw;
 						if(base.opt.onClick)
-							base.opt.onClick.call(base,start);
+							base.opt.onClick.call(base,base.opt.value);
 					}
 				});
 			}else
