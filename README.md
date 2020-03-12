@@ -11,10 +11,13 @@ More information about this can be found in this blog <a href="https://www.jquer
 
 Option | Type | Default | Description
 ------ | ---- | ------- | -----------
-star | char | &#9733 | Customize the rating symbol
-colorFront | color | yellow | The rating symbol color
 colorBack | color | white | Background color
+colorFront | color | yellow | The rating symbol color
+enabled | bool | true | Enable disable plugin
+star | char | &#9733 | Customize the rating symbol
 length | int | 6 | Specify the number of rating stars
+step | bool | true | Rating use only full star
+value | double | 0 | Value of rating
 
 ### Events
 
