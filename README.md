@@ -20,4 +20,4 @@ envelope | object | {attack: 0.05,decay: 0.1,sustain: 0.1,release: 0.5,level: 0.
 
 Event | Params | Description
 ------ | ---- | -------
-onClick | index of key, frequency of key  | Fires after clik
+onClick | index, frequency | Index and frequency clicked key
