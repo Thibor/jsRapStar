@@ -8,6 +8,7 @@
 	margin:0px auto;
 	display:table;
 	clear:both;
+	user-select: none;
 }	
 
 .rapStarFront{
