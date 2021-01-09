@@ -28,7 +28,7 @@
 			if (this.opt.enabled) {
 				$(this).bind({
 					mousemove: function (e) {
-						var relativeX = e.clientX - this.getBoundingClientRect().left;
+						let relativeX = e.clientX - this.getBoundingClientRect().left;
 						if (this.opt.step)
 							widthCurrent = (Math.floor(relativeX / widthSingle) + 1) * widthSingle;
 						else
