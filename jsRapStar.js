@@ -31,21 +31,23 @@
 						e.preventDefault();
 						var relativeX = e.clientX - base.getBoundingClientRect().left;
 						var e = Math.floor(relativeX / sw) + 1;
-						if (base.opt.step) newWidth = e * sw;
-						else newWidth = relativeX;
-						this.StarF.width(newWidth);
+						if (base.opt.step)
+							newWidth = e * sw;
+						else
+							newWidth = relativeX;
+						base.StarF.width(newWidth);
 						if (base.opt.onMousemove)
 							base.opt.onMousemove.call(base, newWidth / sw);
 					},
 					mouseleave: function (e) {
-						this.StarF.width(aw);
+						base.StarF.width(aw);
 						if (base.opt.onMouseleave)
 							base.opt.onMouseleave.call(base, base.opt.value);
 					},
 					click: function (e) {
 						e.preventDefault();
 						aw = newWidth;
-						this.StarF.width(newWidth);
+						base.StarF.width(newWidth);
 						base.opt.value = newWidth / sw;
 						if (base.opt.onClick)
 							base.opt.onClick.call(base, base.opt.value);
