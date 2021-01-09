@@ -25,4 +25,3 @@ Event | Params | Description
 ------ | ---- | -------
 onClick | new rating | Fires after clik
 onMousemove | current rating  | Fires when mouse is moved
-onMouseleave | actual rating | Fires when mouse is leaved
