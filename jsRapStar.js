@@ -21,15 +21,15 @@
 			}, options);
 			var base = this;
 			var starH = Array(this.opt.length + 1).join('<span>' + this.opt.star + '</span>');
-			this.StarB = $(this).empty().addClass('rapStar').css({ color: this.opt.colorBack, 'font-size': this.opt.starHeight + 'px' }).html(starH);
-			var sw = this.StarB.width() / this.opt.length;
+			$(this).empty().addClass('rapStar').css({ color: this.opt.colorBack, 'font-size': this.opt.starHeight + 'px' }).html(starH);
+			var sw = $(this).width() / this.opt.length;
 			var aw = base.opt.value * sw;
 			this.StarF = $('<div>').addClass('rapStarFront').css({ color: this.opt.colorFront }).html(starH).width(aw).appendTo(this);
 			if (this.opt.enabled) {
 				$(this).bind({
 					mousemove: function (e) {
 						e.preventDefault();
-						var relativeX = e.clientX - $(base)[0].getBoundingClientRect().left;
+						var relativeX = e.clientX - base.getBoundingClientRect().left;
 						var e = Math.floor(relativeX / sw) + 1;
 						if (base.opt.step) newWidth = e * sw;
 						else newWidth = relativeX;
