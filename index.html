@@ -21,13 +21,11 @@
 				colorFront: '#0f0',
 				onClick: function (score) {
 					this.StarF.css({ color: 'red' });
+					$('#label').text(score);
 					alert(score);
 				},
 				onMousemove: function (score) {
 					$(this).attr('title', 'Rate ' + score);
-				},
-				onMouseleave(score) {
-					$('#label').text(score);
 				}
 			});
 		});

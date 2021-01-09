@@ -16,8 +16,7 @@
 				length: 6,
 				value: value,
 				onClick: null,
-				onMousemove: null,
-				onMouseleave: null
+				onMousemove: null
 			}, options);
 			let starH = Array(this.opt.length + 1).join('<span>' + this.opt.star + '</span>');
 			$(this).empty().addClass('rapStar').css({ color: this.opt.colorBack, 'font-size': this.opt.starHeight + 'px' }).html(starH);
@@ -39,8 +38,6 @@
 					},
 					mouseleave: function (e) {
 						this.StarF.width(widthValue);
-						if (this.opt.onMouseleave)
-							this.opt.onMouseleave.call(this, this.opt.value);
 					},
 					click: function (e) {
 						widthValue = widthCurrent;
