@@ -35,7 +35,7 @@
 							widthCurrent = relativeX;
 						this.StarF.width(widthCurrent);
 						if (this.opt.onMousemove)
-							this.opt.onMousemove.call(this, newWidth / widthSingle);
+							this.opt.onMousemove.call(this, widthCurrent / widthSingle);
 					},
 					mouseleave: function (e) {
 						this.StarF.width(widthValue);
