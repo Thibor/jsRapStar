@@ -19,38 +19,35 @@
 				onMousemove: null,
 				onMouseleave: null
 			}, options);
-			var base = this;
-			var starH = Array(this.opt.length + 1).join('<span>' + this.opt.star + '</span>');
+			let starH = Array(this.opt.length + 1).join('<span>' + this.opt.star + '</span>');
 			$(this).empty().addClass('rapStar').css({ color: this.opt.colorBack, 'font-size': this.opt.starHeight + 'px' }).html(starH);
-			var sw = $(this).width() / this.opt.length;
-			var aw = base.opt.value * sw;
-			this.StarF = $('<div>').addClass('rapStarFront').css({ color: this.opt.colorFront }).html(starH).width(aw).appendTo(this);
+			let widthSingle = $(this).width() / this.opt.length;
+			let widthValue = this.opt.value * widthSingle;
+			let widthCurrent = widthValue;
+			this.StarF = $('<div>').addClass('rapStarFront').css({ color: this.opt.colorFront }).html(starH).width(widthValue).appendTo(this);
 			if (this.opt.enabled) {
 				$(this).bind({
 					mousemove: function (e) {
-						e.preventDefault();
-						var relativeX = e.clientX - base.getBoundingClientRect().left;
-						var e = Math.floor(relativeX / sw) + 1;
-						if (base.opt.step)
-							newWidth = e * sw;
+						var relativeX = e.clientX - this.getBoundingClientRect().left;
+						if (this.opt.step)
+							widthCurrent = (Math.floor(relativeX / widthSingle) + 1) * widthSingle;
 						else
-							newWidth = relativeX;
-						base.StarF.width(newWidth);
-						if (base.opt.onMousemove)
-							base.opt.onMousemove.call(base, newWidth / sw);
+							widthCurrent = relativeX;
+						this.StarF.width(widthCurrent);
+						if (this.opt.onMousemove)
+							this.opt.onMousemove.call(this, newWidth / widthSingle);
 					},
 					mouseleave: function (e) {
-						base.StarF.width(aw);
-						if (base.opt.onMouseleave)
-							base.opt.onMouseleave.call(base, base.opt.value);
+						this.StarF.width(widthValue);
+						if (this.opt.onMouseleave)
+							this.opt.onMouseleave.call(this, this.opt.value);
 					},
 					click: function (e) {
-						e.preventDefault();
-						aw = newWidth;
-						base.StarF.width(newWidth);
-						base.opt.value = newWidth / sw;
-						if (base.opt.onClick)
-							base.opt.onClick.call(base, base.opt.value);
+						widthValue = widthCurrent;
+						this.StarF.width(widthValue);
+						this.opt.value = widthValue / widthSingle;
+						if (this.opt.onClick)
+							this.opt.onClick.call(this, this.opt.value);
 					}
 				});
 			} else
