@@ -20,29 +20,24 @@
 			}, options);
 			let starH = Array(this.opt.length + 1).join('<span>' + this.opt.star + '</span>');
 			$(this).empty().addClass('rapStar').css({ color: this.opt.colorBack, 'font-size': this.opt.starHeight + 'px' }).html(starH);
-			let widthSingle = $(this).width() / this.opt.length;
-			let widthValue = this.opt.value * widthSingle;
-			let widthCurrent = widthValue;
+			let widthValue = ($(this).width() * this.opt.value) / this.opt.length;
 			this.StarF = $('<div>').addClass('rapStarFront').css({ color: this.opt.colorFront }).html(starH).width(widthValue).appendTo(this);
 			if (this.opt.enabled) {
 				$(this).bind({
 					mousemove: function (e) {
-						let relativeX = e.clientX - this.getBoundingClientRect().left;
+						widthCurrent = e.clientX - this.getBoundingClientRect().left;
 						if (this.opt.step)
-							widthCurrent = (Math.floor(relativeX / widthSingle) + 1) * widthSingle;
-						else
-							widthCurrent = relativeX;
+							widthCurrent = Math.floor((widthCurrent * this.opt.length) / $(this).width()) + 1;
 						this.StarF.width(widthCurrent);
 						if (this.opt.onMousemove)
-							this.opt.onMousemove.call(this, widthCurrent / widthSingle);
+							this.opt.onMousemove.call(this, (widthCurrent * this.opt.length) / $(this).width());
 					},
 					mouseleave: function (e) {
 						this.StarF.width(widthValue);
 					},
 					click: function (e) {
 						widthValue = widthCurrent;
-						this.StarF.width(widthValue);
-						this.opt.value = widthValue / widthSingle;
+						this.opt.value = (widthValue * this.opt.length) / $(this).width();
 						if (this.opt.onClick)
 							this.opt.onClick.call(this, this.opt.value);
 					}
