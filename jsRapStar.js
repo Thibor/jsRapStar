@@ -2,8 +2,8 @@
 	$.fn.jsRapStar = function (options) {
 
 		return this.each(function () {
-			let value = $(this).attr('value'); 
-			let color = $(this).attr('color'); 
+			let value = $(this).attr('value');
+			let color = $(this).attr('color');
 			value = value === undefined ? 0 : parseFloat(value);
 			color = color === undefined ? 'yellow' : color;
 			this.opt = $.extend({
@@ -31,10 +31,10 @@
 							widthCurrent = (Math.floor((widthCurrent * this.opt.length) / $(this).width()) + 1) * ($(this).width() / this.opt.length);
 						this.StarF.width(widthCurrent);
 						if (this.opt.onMousemove)
-							this.opt.onMousemove.call(this, widthCurrent /  ($(this).width() / this.opt.length));
+							this.opt.onMousemove.call(this, widthCurrent / ($(this).width() / this.opt.length));
 					},
 					mouseleave: function (e) {
-						this.StarF.width(widthValue);
+						this.StarF.animate({ width: widthValue });
 					},
 					click: function (e) {
 						widthValue = widthCurrent;
