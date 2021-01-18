@@ -20,7 +20,7 @@
 			}, options);
 			let starH = Array(this.opt.length + 1).join('<span>' + this.opt.star + '</span>');
 			$(this).empty().addClass('rapStar').css({ color: this.opt.colorBack, 'font-size': this.opt.starHeight + 'px' }).html(starH);
-			let widthValue = ($(this).width() * this.opt.value) / this.opt.length;
+			let widthValue = this.opt.value * ($(this).width() / this.opt.length);
 			let widthCurrent = widthValue;
 			this.StarF = $('<div>').addClass('rapStarFront').css({ color: this.opt.colorFront }).html(starH).width(widthValue).appendTo(this);
 			if (this.opt.enabled) {
