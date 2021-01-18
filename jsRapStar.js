@@ -20,13 +20,14 @@
 			}, options);
 			let starH = Array(this.opt.length + 1).join('<span>' + this.opt.star + '</span>');
 			$(this).empty().addClass('rapStar').css({ color: this.opt.colorBack, 'font-size': this.opt.starHeight + 'px' }).html(starH);
-			let widthValue = this.opt.value * ($(this).width() / this.opt.length);
+			let widthSingle = $(this).width() / this.opt.length;
+			let widthValue = this.opt.value * widthSingle;
 			let widthCurrent = widthValue;
 			this.StarF = $('<div>').addClass('rapStarFront').css({ color: this.opt.colorFront }).html(starH).width(widthValue).appendTo(this);
 			if (this.opt.enabled) {
 				$(this).bind({
 					mousemove: function (e) {
-						let widthSingle = $(this).width() / this.opt.length;
+						widthSingle = $(this).width() / this.opt.length;
 						widthCurrent = e.clientX - this.getBoundingClientRect().left;
 						if (this.opt.step)
 							widthCurrent = Math.floor(widthCurrent / widthSingle + 1) * widthSingle;
@@ -39,7 +40,7 @@
 					},
 					click: function (e) {
 						widthValue = widthCurrent;
-						this.opt.value = widthValue / ($(this).width() / this.opt.length);
+						this.opt.value = widthValue / widthSingle;
 						if (this.opt.onClick)
 							this.opt.onClick.call(this, this.opt.value);
 					}
