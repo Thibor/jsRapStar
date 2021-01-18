@@ -1,4 +1,5 @@
 .rapStar {
+	display: inline;
 	color: white;
 	cursor: pointer;
 	font-size: 32px;

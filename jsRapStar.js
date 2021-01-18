@@ -27,7 +27,6 @@
 			if (this.opt.enabled) {
 				$(this).bind({
 					mousemove: function (e) {
-						widthSingle = $(this).width() / this.opt.length;
 						let relativeX = e.clientX - this.getBoundingClientRect().left;
 						if (this.opt.step)
 							widthCurrent = (Math.floor(relativeX / widthSingle) + 1) * widthSingle;
@@ -41,7 +40,6 @@
 						this.StarF.width(widthValue);
 					},
 					click: function (e) {
-						widthSingle = $(this).width() / this.opt.length;
 						widthValue = widthCurrent;
 						this.StarF.width(widthValue);
 						this.opt.value = widthValue / widthSingle;
