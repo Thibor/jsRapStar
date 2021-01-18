@@ -26,12 +26,13 @@
 			if (this.opt.enabled) {
 				$(this).bind({
 					mousemove: function (e) {
+						let widthSingle = $(this).width() / this.opt.length;
 						widthCurrent = e.clientX - this.getBoundingClientRect().left;
 						if (this.opt.step)
-							widthCurrent = (Math.floor((widthCurrent * this.opt.length) / $(this).width()) + 1) * ($(this).width() / this.opt.length);
+							widthCurrent = Math.floor(widthCurrent / widthSingle + 1) * widthSingle;
 						this.StarF.width(widthCurrent);
 						if (this.opt.onMousemove)
-							this.opt.onMousemove.call(this, widthCurrent / ($(this).width() / this.opt.length));
+							this.opt.onMousemove.call(this, widthCurrent / widthSingle);
 					},
 					mouseleave: function (e) {
 						this.StarF.animate({ width: widthValue });
